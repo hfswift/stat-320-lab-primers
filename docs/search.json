@@ -245,14 +245,22 @@
     "href": "instructions/common-errors.html",
     "title": "common-errors",
     "section": "",
-    "text": "One of the most frustrating parts for people learning R is troubleshooting errors. R is incredibly powerful, but it is dumb. It can’t guess what you meant, nor add in a comma that you forgot to type. Read Chapter 6: Deciphering Common R Errors (5 min) which covers the most common errors in R and how to decipher them. R errors aren’t always clear to new users, but they almost always will direct you to where the problem occurs. Sometimes that is just telling you that it can’t find the file or object you are trying to point it to. Other times, it will repeat your code right up to the point where it didn’t understand. That helps focus your attention when searching for errors."
+    "text": "One of the most frustrating parts for people learning R is troubleshooting errors. R is incredibly powerful, but it is dumb. It can’t guess what you meant, nor add in a comma that you forgot to type. Read Chapter 6: Deciphering Common R Errors (5 min) which covers the most common errors in R and how to decipher them. R errors aren’t always clear to new users, but they almost always will direct you to where the problem occurs. Sometimes that is just telling you that it can’t find the file or object you are trying to point it to. Other times, it will repeat your code right up to the point where it didn’t understand. That helps focus your attention when searching for errors.",
+    "crumbs": [
+      "General Lab Instructions",
+      "Common Errors"
+    ]
   },
   {
     "objectID": "instructions/common-errors.html#part-4-r-grammer-errors",
     "href": "instructions/common-errors.html#part-4-r-grammer-errors",
     "title": "common-errors",
     "section": "",
-    "text": "One of the most frustrating parts for people learning R is troubleshooting errors. R is incredibly powerful, but it is dumb. It can’t guess what you meant, nor add in a comma that you forgot to type. Read Chapter 6: Deciphering Common R Errors (5 min) which covers the most common errors in R and how to decipher them. R errors aren’t always clear to new users, but they almost always will direct you to where the problem occurs. Sometimes that is just telling you that it can’t find the file or object you are trying to point it to. Other times, it will repeat your code right up to the point where it didn’t understand. That helps focus your attention when searching for errors."
+    "text": "One of the most frustrating parts for people learning R is troubleshooting errors. R is incredibly powerful, but it is dumb. It can’t guess what you meant, nor add in a comma that you forgot to type. Read Chapter 6: Deciphering Common R Errors (5 min) which covers the most common errors in R and how to decipher them. R errors aren’t always clear to new users, but they almost always will direct you to where the problem occurs. Sometimes that is just telling you that it can’t find the file or object you are trying to point it to. Other times, it will repeat your code right up to the point where it didn’t understand. That helps focus your attention when searching for errors.",
+    "crumbs": [
+      "General Lab Instructions",
+      "Common Errors"
+    ]
   },
   {
     "objectID": "lab-1-primer/lab-1-intro-r-primer.html#introduction",
@@ -505,6 +513,28 @@
     "crumbs": [
       "Getting Started with R",
       "Introduction to Quarto"
+    ]
+  },
+  {
+    "objectID": "instructions/importing-exporting.html",
+    "href": "instructions/importing-exporting.html",
+    "title": "Setting up and Finishing your Lab",
+    "section": "",
+    "text": "This video shows a general lab workflow that you will follow, except for their instructions for turning in a .zip. You will instead download ONLY the rendered .html file and submit that to your assignment.",
+    "crumbs": [
+      "General Lab Instructions",
+      "Lab Workflow"
+    ]
+  },
+  {
+    "objectID": "instructions/importing-exporting.html#lab-workflow",
+    "href": "instructions/importing-exporting.html#lab-workflow",
+    "title": "Setting up and Finishing your Lab",
+    "section": "",
+    "text": "This video shows a general lab workflow that you will follow, except for their instructions for turning in a .zip. You will instead download ONLY the rendered .html file and submit that to your assignment.",
+    "crumbs": [
+      "General Lab Instructions",
+      "Lab Workflow"
     ]
   }
 ]

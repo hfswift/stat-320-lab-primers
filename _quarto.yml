@@ -35,9 +35,7 @@ website:
       contents:
       - href: instructions/importing-exporting.qmd
         text: "Lab Workflow"      
-      - href: 
-        text: "R Code Style Guide"
-      - href: 
+      - href: instructions/common-errors.qmd
         text: "Common Errors"
     - section: "Getting Started with R"
       contents:
