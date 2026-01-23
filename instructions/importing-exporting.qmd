@@ -7,4 +7,12 @@ format: html
 
 This video shows a general lab workflow that you will follow, except for their instructions for turning in a .zip. You will instead download ONLY the rendered .html file and submit that to your assignment. 
 
+To submit your .html, be sure you first:
+* Set up to view rendered document in the Viewer Pane (only need to set once; instructions in video)
+* Check the .qmd was renamed with your "LastF-" prior to the file name
+* Check the .qmd is the correct one to submit with all your work (if you renamed this when you imported it initially, then there shouldn't be any confusions)
+* Render the .qmd to .html fresh prior to exporting, so you don't accidentally submit an old .html.
+
 <iframe src="https://csumb.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=8d0b7971-422f-4e6a-9e8e-b344003ab2ae&autoplay=false&offerviewer=true&showtitle=true&showbrand=false&captions=false&interactivity=all" height="338" width="600" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="R Server (Cal ICOR) Orientation" ></iframe>
+
+*Note: if you cannot render your document, there are instructions in the video to how to force a render.*
