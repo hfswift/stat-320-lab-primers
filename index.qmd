@@ -1,0 +1,13 @@
+---
+title: "STAT 320 Lab Primers"
+---
+
+This website provides lab primers to practice the code used in STAT 320: Non Parametric Statistics at California State University, Monterey Bay.  It uses the following packages:  
+
+1. `ggformula`  
+2. `mosaic`  
+3. `tidyverse`  
+5. `stats`  
+
+
+

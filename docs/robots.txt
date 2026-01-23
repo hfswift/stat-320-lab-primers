@@ -1,0 +1,1 @@
+Sitemap: https://hfswift.github.io/stat-320-lab-primers/sitemap.xml

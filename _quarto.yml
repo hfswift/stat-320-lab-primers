@@ -1,0 +1,69 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  page-navigation: true
+  title: "STAT 320 Lab Primers"
+  description: "Practice for your STAT 320 Labs"
+  site-url: "https://hfswift.github.io/stat-320-lab-primers"
+  repo-url: https://github.com/hfswift/stat-320-lab-primers
+  repo-actions: [issue]
+
+  page-footer:
+    right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
+    left: "&copy; Copyright 2026, Holly Swift"
+    background: "#D9E3E4"
+
+  sidebar:
+#    background: "#5D737E"
+    pinned: true
+    align: center
+    tools:
+      - icon: github
+        href: https://github.com/hfswift/stat-320-lab-primers
+        text: "GitHub organization"
+
+
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
+    - href: index.qmd
+      text: "Home"
+    - section: "General Lab Instructions"
+      contents:
+      - href: instructions/importing-exporting.qmd
+        text: "Lab Workflow"      
+      - href: 
+        text: "R Code Style Guide"
+      - href: 
+        text: "Common Errors"
+    - section: "Getting Started with R"
+      contents:
+      - href: prep-materials/rstudio-orientation.qmd
+        text: "RStudio Orientation"    
+      - href: prep-materials/intro-to-quarto.qmd
+        text: "Introduction to Quarto"
+      - href: prep-materials/install-r.qmd
+        text: "Optional: Install R and RStudio"        
+    - section: "Lab Primers"  
+      contents: 
+      - href: lab-1-primer/lab-1-intro-r-primer.qmd
+        text: "Lab 1 Primer"
+
+
+       
+format:
+  html:
+    theme: "spacelab"
+    mainfont: "sans-serif"
+    code-copy: true
+    code-overflow: wrap
+    toc: true
+    css: styles.css  
+#    linkcolor: "#5D737E"
+#    highlight-style: a11y-dark
+
+editor: source
+
