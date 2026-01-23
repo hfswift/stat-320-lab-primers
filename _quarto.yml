@@ -35,8 +35,6 @@ website:
       contents:
       - href: instructions/importing-exporting.qmd
         text: "Lab Workflow"      
-      - href: instructions/common-errors.qmd
-        text: "Common Errors"
     - section: "Getting Started with R"
       contents:
       - href: prep-materials/rstudio-orientation.qmd
