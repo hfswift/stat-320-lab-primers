@@ -1,5 +1,5 @@
 ---
-title: "Lab 2: Introduction to Quarto Primer"
+title: "Lab 1: Introduction to Quarto & Exploratory Data Analysis"
 format: 
   live-html:
     webr:
@@ -10,7 +10,7 @@ format:
       repos:
         - https://projectmosaic.r-universe.dev
       resources: 
-        - https://raw.githubusercontent.com/hfswift/stat-320-lab-primers/refs/heads/main/lab-2-primer/penguins.csv
+        - https://raw.githubusercontent.com/hfswift/stat-320-lab-primers/refs/heads/main/lab-1-primer/penguins.csv
       cell-options:
         warning: true
         completion: false
