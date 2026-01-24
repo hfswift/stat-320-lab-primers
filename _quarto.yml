@@ -35,7 +35,7 @@ website:
       contents:
       - href: instructions/importing-exporting.qmd
         text: "Lab Workflow"      
-      - href: instructions/basic-r-code/basic-r-code.qmd
+      - href: basic-r-code/basic-r-code.qmd
         text: "Basic R Code"      
     - section: "Getting Started with R"
       contents:

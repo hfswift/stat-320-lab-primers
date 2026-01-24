@@ -1,5 +1,5 @@
 ---
-title: "Lab 1: Introduction to R Primer"
+title: "Basic R Coding Primer"
 format: 
   live-html:
     webr:
@@ -10,8 +10,8 @@ format:
       repos:
         - https://projectmosaic.r-universe.dev
       resources: 
-        - https://raw.githubusercontent.com/hfswift/stat-320-lab-primers/refs/heads/main/lab-1-primer/study.csv
-        - https://raw.githubusercontent.com/hfswift/stat-320-lab-primers/refs/heads/main/lab-1-primer/study2.csv
+        - https://raw.githubusercontent.com/hfswift/stat-320-lab-primers/refs/heads/main/basic-r-code/study.csv
+        - https://raw.githubusercontent.com/hfswift/stat-320-lab-primers/refs/heads/main/basic-r-code/study2.csv
       cell-options:
         warning: true
         completion: false
