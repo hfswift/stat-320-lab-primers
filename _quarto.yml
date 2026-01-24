@@ -35,6 +35,8 @@ website:
       contents:
       - href: instructions/importing-exporting.qmd
         text: "Lab Workflow"      
+      - href: instructions/basic-r-code/basic-r-code.qmd
+        text: "Basic R Code"      
     - section: "Getting Started with R"
       contents:
       - href: prep-materials/rstudio-orientation.qmd
@@ -45,7 +47,7 @@ website:
         text: "Optional: Install R and RStudio"        
     - section: "Lab Primers"  
       contents: 
-      - href: lab-1-primer/lab-1-intro-r-primer.qmd
+      - href: lab-1-primer/lab-1-eda-primer.qmd
         text: "Lab 1 Primer"
 
 
