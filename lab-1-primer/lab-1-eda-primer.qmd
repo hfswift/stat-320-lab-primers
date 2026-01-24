@@ -49,7 +49,7 @@ Please note that all images were created with modifications to the defaults to m
 
 ## Introduction
 
-This Primer will introduce you to using Markdown to create documents. The good news is: you've already been doing this! The .qmd files you are using are **Q**uarto documents that are written with **m**ark**d**own and you've been editing them since week 1. We're just going to make some of what you've already learned more explicit. 
+This Primer will introduce you to using Markdown to create documents. The .qmd files you are using are **Q**uarto documents that are written with **m**ark**d**own. If you have used RMarkdown files before, these are extremely similar.  
 
 
 ## Part 1: Introduction to Markdown
