@@ -13,7 +13,7 @@ website:
   page-footer:
     right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
     left: "&copy; Copyright 2026, Holly Swift"
-    background: "446e9b"
+    background: "#446e9b"
 
   sidebar:
 #    background: "#eeeeee"
