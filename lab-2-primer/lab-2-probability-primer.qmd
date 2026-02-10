@@ -1,0 +1,443 @@
+---
+title: "Lab 2: Probability Theory"
+format: 
+  live-html:
+    webr:
+      packages: 
+        - ggformula
+        - mosaic
+        - tidyverse
+      repos:
+        - https://projectmosaic.r-universe.dev
+      cell-options:
+        warning: true
+        completion: false
+execute: 
+  warning: false
+  message: false
+  echo: true
+code-copy: true
+code-overflow: wrap
+toc: true
+css: ../styles.css
+---
+
+
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+{{< include ./_extensions/r-wasm/live/_gradethis.qmd >}}
+
+```{webr}
+#| label: theme
+#| include: false
+#| edit: false
+library(ggplot2)
+theme_set(theme_light())
+options(ggplot2.continuous.color = scale_color_viridis_c, 
+        ggplot2.continuous.fill = scale_fill_viridis_c,
+        ggplot2.discrete.color = scale_color_viridis_d,
+        ggplot2.discrete.fill = scale_fill_viridis_d)
+```
+
+::: {.callout-note collapse="true"}
+## Digital Accessibility
+
+Please note that all images were created with modifications to the defaults to make them digitally accessible. If you recreate this code in another environment, your plots have different colors and backgrounds.
+:::
+
+
+## Binomial Probabilities  
+
+Here is a review of some of the code you will use in Lab 2. You can also refer to Note Outline 2 from class.  
+
+### Theoretical Probabilities
+
+If you meet the conditions to use a binomial scenario, then the probability distribution follows the binomial distribution and you can use the mathematical formula to calculate the probability of any one or multiple events occurring. 
+
+
+#### $P(x = X)$
+
+We can calculate the probability of a discrete event occurring `X` times in `n` cases ($P(x = X)$) if the probability of x occurring is `pi`using either of the codes below: 
+
+```{r}
+#| label: dbinom-general
+#| eval: FALSE
+
+dbinom(x = X, size = n, prob = pi)
+dbinom(X, n, pi) # you do not need to label the arguments if you provide them in exactly this order
+```
+
+
+#### $P(x < X)$
+
+We can calculate the probability of a discrete event occurring less than `X` times in `n` cases ($P(x < X)$) if the probability of x occurring is `pi`using either of the codes below. 
+
+```{r}
+#| label: pbinom-less-general
+#| eval: FALSE
+
+pbinom(q = X-1, size = n, prob = pi) #we do not want to include the probability of x in this calculation, so we supply one less than it to the argument
+pbinom(X-1, n, pi) 
+```
+
+`pbinom()` always calculates sum of the probability for the the value you supply to the first argument `x=` and every value less than it down to x = 0. So in the example above, if you want to calculate the probability less than x (but not including x). 
+
+You can see below that using `pbinom()` is the equivalent to adding `dbinom()` calculations for x and all values less than x:
+
+```{webr}
+#| label: pbinom-dbinom
+pbinom(q = 3, size = 5, prob = 0.5) 
+dbinom(x = 3, size = 5, prob = 0.5) + dbinom(x = 2, size = 5, prob = 0.5) + dbinom (x = 1, size = 5, prob = 0.5) + dbinom(x = 0, size = 5, prob = 0.5)
+```
+
+
+#### $P(x > X)$
+
+
+We can calculate the probability of a discrete event occurring more than `X` times in `n` cases ($P(x > X)$) if the probability of x occurring is `pi`using either of the codes below. 
+
+```{r}
+#| label: pbinom-gtr-general
+#| eval: FALSE
+
+1-pbinom(q = X, size = n, prob = pi) 
+pbinom(q = X, size = n, prob = pi, lower.tail = FALSE)
+```
+
+Both functions above calculate the same thing. We essentially calculate the probability of seeing x and less, and then subtract that from 1 to get the probability of more than x. `lower.tail = FALSE` does the same, just asks it to return the reverse calculation. We have to be careful to not subtract the probability of `X` occurring. 
+
+
+#### $P(x \leq X)$
+
+
+We can calculate the probability of a discrete event occurring `X` times or fewer in `n` cases ($P(x \leq X)$) if the probability of x occurring is `pi`using either of the codes below: 
+
+```{r}
+#| label: pbinom-leq-general
+#| eval: FALSE
+
+pbinom(q = X, size = n, prob = pi)
+pbinom(X, n, pi) # you do not need to label the arguments if you provide them in exactly this order
+```
+
+
+#### $P(x \geq X)$
+
+
+We can calculate the probability of a discrete event occurring `X` times or fewer in `n` cases ($P(x \geq X)$) if the probability of x occurring is `pi`using either of the codes below: 
+
+```{r}
+#| label: pbinom-geq-general
+#| eval: FALSE
+
+pbinom(q = X, size = n, prob = pi)
+pbinom(X, n, pi) # you do not need to label the arguments if you provide them in exactly this order
+```
+
+
+#### Practice
+
+
+Scenario: It is commonly repeated on the internet (but unsourced and unverified) that only 10% of National Park visitors walk more than 1 mile from a road / trailhead. 
+
+If this is true, what is the probability ....
+
+
+1.1.  ...that you talk to 10 people and only 3 of them have walked a mile away from a road?
+
+Fill in the blanks to calculate the probability. 
+
+```{webr}
+#| label: dbinom-exercise
+#| exercise: ex-dbinom
+
+_______(x = ___, n = _____, prob = 0.1)
+```
+
+
+::: {.solution exercise="ex-dbinom"}
+
+#### Solution
+
+```{webr}
+#| exercise: ex-dbimon
+#| solution: true
+dbinom(x = 3, n = 10, prob = 0.1)
+```
+
+:::
+
+```{webr}
+#| exercise: ex-dbinom
+#| check: true
+gradethis::grade_this_code()
+```
+
+
+
+1.2. ...that you talk to 30 people and 5 or fewer of them have walked a mile away from a road?
+
+Fill in the blanks to calculate the probability. 
+
+```{webr}
+#| label: pbinom5less-exercise
+#| exercise: ex-pbinom5less
+
+_______(x = ___, n = _____, prob = 0.1)
+```
+
+
+::: {.solution exercise="ex-pbinom5less"}
+
+#### Solution
+
+```{webr}
+#| exercise: ex-pbinom5less
+#| solution: true
+pbinom(x = 5, n = 30, prob = 0.1)
+```
+
+:::
+
+```{webr}
+#| exercise: ex-pbinom5less
+#| check: true
+gradethis::grade_this_code()
+```
+
+
+
+
+1.3. ...that you talk to 25 people and 10 or more of them have walked a mile away from a road?
+
+Fill in the blanks to calculate the probability. 
+
+```{webr}
+#| label: pbinom10gtr-exercise
+#| exercise: ex-pbinom10gtr
+
+1-_______(x = ___, n = _____, prob = 0.1)
+```
+
+
+::: {.solution exercise="ex-pbinom10gtr"}
+
+#### Solution
+
+```{webr}
+#| exercise: ex-pbinom10gtr
+#| solution: true
+1-pbinom(x = 10-1, n = 25, prob = 0.1)
+```
+
+:::
+
+```{webr}
+#| exercise: ex-pbinom10gtr
+#| check: true
+gradethis::grade_this_code()
+```
+
+
+### Empirical Calculations
+
+
+We can calculate probabilities by creating our own probability distribution by simulating a binomial sampling distribution.  
+
+We can pull random cases from a binomial distribution and store those data using the following, where `R` is the number of times to repeat the sample, `N` is the number of cases in one sample and `pi` is the probability of success : 
+
+```{r}
+#| label: rbinom-demo
+#| eval: FALSE
+name<-rbinom(n = R, size = N, prob = pi)
+```
+
+`name` has the number of 'successes' that occured in each of the samples of size `N` that was repeated `R` times. 
+
+Recall that if you have a dataset and ask put a vector of information in an inequality, you will get back a vector of information evaluating if the inequality was true or false for each case. 
+
+```{r}
+#| label: ineq-demo
+#| echo: FALSE
+example<-rbinom(n=25, size = 25, prob = 0.5)
+```
+
+```{r}
+#| label: ineq-demo2
+example > 10
+```
+If we take the `mean()` of that inequality, R will treat TRUE = 1 and FALSE = 0, so the mean of that inequality would be the probability that a sample had more than 10 successes
+
+```{webr}
+#| label: ineq-demo3
+mean(example > 10)
+```
+
+We could also calculate the probability a sample had 10 or more successes with
+
+```{webr}
+#| label: ineq-demo4
+mean(example >= 10)
+```
+
+
+The inequalities you can use are: 
+
+Calculates | Inequality Code
+-----------|----------------
+Equal to   |  `==`
+Greater than | `>`
+Less than | `<`
+Greater than or equal to | `>=`
+Less than or equal to | `<=`
+
+#### Practice
+
+Scenario: It is commonly repeated on the internet (but unsourced and unverified) that only 10% of National Park visitors walk more than 1 mile from a road / trailhead. 
+
+If this is true, create a simulation to calculate the probability that ....
+
+1.4. That you would get a sample of 25 people and find that 10 or more of them have walked a mile away from a road?
+
+```{webr}
+#| label: binomsim-exercise
+#| exercise: ex-binom-sim
+
+simulation <- _____(n = _____, size = _____, prop = _____)
+_______(simulation ___ _____)
+```
+
+
+::: {.solution exercise="ex-binom-sim"}
+
+#### Solution
+
+```{webr}
+#| exercise: ex-binom-sim
+#| solution: true
+simulation <- rbinom(n = 1000, size = 25, prop = 0.1)
+mean(simulation >= 10)
+```
+
+:::
+
+```{webr}
+#| exercise: ex-binom-sim
+#| check: true
+gradethis::grade_this_code()
+```
+
+
+## Normal Distribution
+
+Normal distributions are defined by $\mu$ and $\sigma$: $N(\mu, \sigma)$. We can calculate the probability of a value or less $P(X \leq x)$ occurring in a Normal distribution using: 
+
+```{r}
+#| label: gen-pnorm-less
+#| eval: FALSE
+pnorm(q = X, mean = mu, sd = sigma)
+pnorm(X, mu, sigma) #again, you don't need the argument names if you keep them in this exact order 
+```
+
+where `X` is the value you want to calculate the probability from, `mu` is the value mean and `sigma` is the value of the standard deviation of the normal distribution.
+
+
+You can calculate the probability of a value or more ($P(X \geq x)$) using 
+
+```{r}
+#| label: gen-pnorm-gtr
+#| eval: FALSE
+1-pnorm(q = X, mean = mu, sd = sigma)
+pnorm(X, mu, sigma, lower.tail = FALSE) 
+```
+
+With the normal distribution, we do not need to worry about the probability of X, since in a continuous probability distribution, the probability of a single value is 0. That also means that $P(X \geq x)$ = $P(X > x)$ and $P(X \leq x)$ = $P(X < x)$. 
+
+
+Don't forget that standard deviation $s = \sqrt(s^2)$, so you may need to calculate $s$ from $s^2$ using the function `sqrt()`
+
+```{webr}
+_____(16)
+```
+
+
+### Practice
+
+Scenario: Sardine length is normally distributed with a mean of 120 mm and a standard deviation of 20 mm. 
+
+If this is true, find the probability that....
+
+
+2.1. ... a randomly selected sardine would have a length of greater than 134 mm
+
+```{webr}
+#| label: pnorm1-exercise
+#| exercise: ex-pnorm1
+
+1- _____(q = _____, mean = _____, sd = _____)
+```
+
+
+::: {.solution exercise="ex-pnorm1"}
+
+#### Solution
+
+```{webr}
+#| exercise: ex-pnorm1
+#| solution: true
+1- pnorm(q = 134, mean = 120, sd = 20)
+```
+
+:::
+
+```{webr}
+#| exercise: ex-pnorm1
+#| check: true
+gradethis::grade_this_code()
+```
+
+
+2.2. ... a randomly selected sardine would have a length of less than 75 mm
+
+```{webr}
+#| label: pnorm2-exercise
+#| exercise: ex-pnorm2
+
+_____(q = _____, mean = _____, sd = _____)
+```
+
+
+::: {.solution exercise="ex-pnorm2"}
+
+#### Solution
+
+```{webr}
+#| exercise: ex-pnorm2
+#| solution: true
+pnorm(q = 80, mean = 120, sd = 20)
+```
+
+:::
+
+```{webr}
+#| exercise: ex-pnorm2
+#| check: true
+gradethis::grade_this_code()
+```
+
+
+
+
+
+
+
+## Interpreting probabilities
+
+When interpreting probabilities, make sure you include the full context, and include the assumption that probability was calculated under! 
+
+
+## Final Reminders  
+
+Remember, all the code needed for the labs can be found in your note outlines.   
+
+Please see Canvas for information on the Math/Stat Cafe (generic R help available, but not class-specific help), and your Instructor's Student Hours (Office Hours) if you need any additional help.
+

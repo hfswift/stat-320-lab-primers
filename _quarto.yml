@@ -49,7 +49,8 @@ website:
       contents: 
       - href: lab-1-primer/lab-1-eda-primer.qmd
         text: "Lab 1 Primer"
-
+      - href: lab-2-primer/lab-2-probability-primer.qmd
+        text: "Lab 2 Primer"
 
        
 format:

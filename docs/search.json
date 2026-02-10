@@ -657,5 +657,49 @@
       "Lab Primers",
       "Lab 1 Primer"
     ]
+  },
+  {
+    "objectID": "lab-2-primer/lab-2-probability-primer.html#binomial-probabilities",
+    "href": "lab-2-primer/lab-2-probability-primer.html#binomial-probabilities",
+    "title": "Lab 2: Probability Theory",
+    "section": "Binomial Probabilities",
+    "text": "Binomial Probabilities\nHere is a review of some of the code you will use in Lab 2. You can also refer to Note Outline 2 from class.\n\nTheoretical Probabilities\nIf you meet the conditions to use a binomial scenario, then the probability distribution follows the binomial distribution and you can use the mathematical formula to calculate the probability of any one or multiple events occurring.\n\n\\(P(x = X)\\)\nWe can calculate the probability of a discrete event occurring X times in n cases (\\(P(x = X)\\)) if the probability of x occurring is piusing either of the codes below:\n\ndbinom(x = X, size = n, prob = pi)\ndbinom(X, n, pi) # you do not need to label the arguments if you provide them in exactly this order\n\n\n\n\\(P(x &lt; X)\\)\nWe can calculate the probability of a discrete event occurring less than X times in n cases (\\(P(x &lt; X)\\)) if the probability of x occurring is piusing either of the codes below.\n\npbinom(q = X-1, size = n, prob = pi) #we do not want to include the probability of x in this calculation, so we supply one less than it to the argument\npbinom(X-1, n, pi) \n\npbinom() always calculates sum of the probability for the the value you supply to the first argument x= and every value less than it down to x = 0. So in the example above, if you want to calculate the probability less than x (but not including x).\nYou can see below that using pbinom() is the equivalent to adding dbinom() calculations for x and all values less than x:\n\n\n\n\n\n\n\n\n\n\n\\(P(x &gt; X)\\)\nWe can calculate the probability of a discrete event occurring more than X times in n cases (\\(P(x &gt; X)\\)) if the probability of x occurring is piusing either of the codes below.\n\n1-pbinom(q = X, size = n, prob = pi) \npbinom(q = X, size = n, prob = pi, lower.tail = FALSE)\n\nBoth functions above calculate the same thing. We essentially calculate the probability of seeing x and less, and then subtract that from 1 to get the probability of more than x. lower.tail = FALSE does the same, just asks it to return the reverse calculation. We have to be careful to not subtract the probability of X occurring.\n\n\n\\(P(x \\leq X)\\)\nWe can calculate the probability of a discrete event occurring X times or fewer in n cases (\\(P(x \\leq X)\\)) if the probability of x occurring is piusing either of the codes below:\n\npbinom(q = X, size = n, prob = pi)\npbinom(X, n, pi) # you do not need to label the arguments if you provide them in exactly this order\n\n\n\n\\(P(x \\geq X)\\)\nWe can calculate the probability of a discrete event occurring X times or fewer in n cases (\\(P(x \\geq X)\\)) if the probability of x occurring is piusing either of the codes below:\n\npbinom(q = X, size = n, prob = pi)\npbinom(X, n, pi) # you do not need to label the arguments if you provide them in exactly this order\n\n\n\nPractice\nScenario: It is commonly repeated on the internet (but unsourced and unverified) that only 10% of National Park visitors walk more than 1 mile from a road / trailhead.\nIf this is true, what is the probability ….\n1.1. …that you talk to 10 people and only 3 of them have walked a mile away from a road?\nFill in the blanks to calculate the probability.\n\n\n\n\n\n\n\n\n\n\n\ndbinom(x = 3, n = 10, prob = 0.1)\ndbinom(x = 3, n = 10, prob = 0.1)\n\n\n\n\n\n\n1.2. …that you talk to 30 people and 5 or fewer of them have walked a mile away from a road?\nFill in the blanks to calculate the probability.\n\n\n\n\n\n\n\n\n\n\n\npbinom(x = 5, n = 30, prob = 0.1)\npbinom(x = 5, n = 30, prob = 0.1)\n\n\n\n\n\n\n1.3. …that you talk to 25 people and 10 or more of them have walked a mile away from a road?\nFill in the blanks to calculate the probability.\n\n\n\n\n\n\n\n\n\n\n\n1-pbinom(x = 10-1, n = 25, prob = 0.1)\n1-pbinom(x = 10-1, n = 25, prob = 0.1)\n\n\n\n\n\n\n\n\n\nEmpirical Calculations\nWe can calculate probabilities by creating our own probability distribution by simulating a binomial sampling distribution.\nWe can pull random cases from a binomial distribution and store those data using the following, where R is the number of times to repeat the sample, N is the number of cases in one sample and pi is the probability of success :\n\nname&lt;-rbinom(n = R, size = N, prob = pi)\n\nname has the number of ‘successes’ that occured in each of the samples of size N that was repeated R times.\nRecall that if you have a dataset and ask put a vector of information in an inequality, you will get back a vector of information evaluating if the inequality was true or false for each case.\n\nexample &gt; 10\n\n [1]  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE\n[13] FALSE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE\n[25]  TRUE\n\n\nIf we take the mean() of that inequality, R will treat TRUE = 1 and FALSE = 0, so the mean of that inequality would be the probability that a sample had more than 10 successes\n\n\n\n\n\n\n\n\nWe could also calculate the probability a sample had 10 or more successes with\n\n\n\n\n\n\n\n\nThe inequalities you can use are:\n\n\n\nCalculates\nInequality Code\n\n\n\n\nEqual to\n==\n\n\nGreater than\n&gt;\n\n\nLess than\n&lt;\n\n\nGreater than or equal to\n&gt;=\n\n\nLess than or equal to\n&lt;=\n\n\n\n\nPractice\nScenario: It is commonly repeated on the internet (but unsourced and unverified) that only 10% of National Park visitors walk more than 1 mile from a road / trailhead.\nIf this is true, create a simulation to calculate the probability that ….\n1.4. That you would get a sample of 25 people and find that 10 or more of them have walked a mile away from a road?\n\n\n\n\n\n\n\n\n\n\n\nsimulation &lt;- rbinom(n = 1000, size = 25, prop = 0.1)\nmean(simulation &gt;= 10)\nsimulation &lt;- rbinom(n = 1000, size = 25, prop = 0.1)\nmean(simulation &gt;= 10)",
+    "crumbs": [
+      "Lab Primers",
+      "Lab 2 Primer"
+    ]
+  },
+  {
+    "objectID": "lab-2-primer/lab-2-probability-primer.html#final-reminders",
+    "href": "lab-2-primer/lab-2-probability-primer.html#final-reminders",
+    "title": "Lab 2: Probability Theory",
+    "section": "Final Reminders",
+    "text": "Final Reminders\nRemember, all the code needed for the labs can be found in your note outlines.\nPlease see Canvas for information on the Math/Stat Cafe (generic R help available, but not class-specific help), and your Instructor’s Student Hours (Office Hours) if you need any additional help.",
+    "crumbs": [
+      "Lab Primers",
+      "Lab 2 Primer"
+    ]
+  },
+  {
+    "objectID": "lab-2-primer/lab-2-probability-primer.html#normal-distribution",
+    "href": "lab-2-primer/lab-2-probability-primer.html#normal-distribution",
+    "title": "Lab 2: Probability Theory",
+    "section": "Normal Distribution",
+    "text": "Normal Distribution\nNormal distributions are defined by \\(\\mu\\) and \\(\\sigma\\): \\(N(\\mu, \\sigma)\\). We can calculate the probability of a value or less \\(P(X \\leq x)\\) occurring in a Normal distribution using:\n\npnorm(q = X, mean = mu, sd = sigma)\npnorm(X, mu, sigma) #again, you don't need the argument names if you keep them in this exact order \n\nwhere X is the value you want to calculate the probability from, mu is the value mean and sigma is the value of the standard deviation of the normal distribution.\nYou can calculate the probability of a value or more (\\(P(X \\geq x)\\)) using\n\n1-pnorm(q = X, mean = mu, sd = sigma)\npnorm(X, mu, sigma, lower.tail = FALSE) \n\nWith the normal distribution, we do not need to worry about the probability of X, since in a continuous probability distribution, the probability of a single value is 0. That also means that \\(P(X \\geq x)\\) = \\(P(X &gt; x)\\) and \\(P(X \\leq x)\\) = \\(P(X &lt; x)\\).\nDon’t forget that standard deviation \\(s = \\sqrt(s^2)\\), so you may need to calculate \\(s\\) from \\(s^2\\) using the function sqrt()\n\n\n\n\n\n\n\n\n\nPractice\nScenario: Sardine length is normally distributed with a mean of 120 mm and a standard deviation of 20 mm.\nIf this is true, find the probability that….\n2.1. … a randomly selected sardine would have a length of greater than 134 mm\n\n\n\n\n\n\n\n\n\n\n\n1- pnorm(q = 134, mean = 120, sd = 20)\n1- pnorm(q = 134, mean = 120, sd = 20)\n\n\n\n\n\n\n2.2. … a randomly selected sardine would have a length of less than 75 mm\n\n\n\n\n\n\n\n\n\n\n\npnorm(q = 80, mean = 120, sd = 20)\npnorm(q = 80, mean = 120, sd = 20)",
+    "crumbs": [
+      "Lab Primers",
+      "Lab 2 Primer"
+    ]
+  },
+  {
+    "objectID": "lab-2-primer/lab-2-probability-primer.html#interpreting-probabilities",
+    "href": "lab-2-primer/lab-2-probability-primer.html#interpreting-probabilities",
+    "title": "Lab 2: Probability Theory",
+    "section": "Interpreting probabilities",
+    "text": "Interpreting probabilities\nWhen interpreting probabilities, make sure you include the full context, and include the assumption that probability was calculated under!",
+    "crumbs": [
+      "Lab Primers",
+      "Lab 2 Primer"
+    ]
   }
 ]
